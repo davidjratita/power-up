@@ -1,14 +1,8 @@
-import 'dart:ui';
 import '../themes/theme.dart';
-import 'package:myapp/utils.dart';
-import '../widgets/utils_class.dart';
 import 'package:myapp/home/home.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/gestures.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:myapp/settings/settings.dart';
-import 'package:myapp/widgets/pie_chart.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:myapp/calories/calories_main.dart';
 import 'package:myapp/workout/workout-home-screen.dart';
 

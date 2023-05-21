@@ -1,16 +1,15 @@
-import 'dart:ui';
 import '../themes/theme.dart';
-import 'package:myapp/utils.dart';
+import 'package:intl/intl.dart';
 import '../widgets/line_chart.dart';
-import '../widgets/utils_class.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/gestures.dart';
-import 'package:myapp/widgets/line_chart.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:myapp/widgets/utils_class.dart';
 import 'package:myapp/widgets/bubble_tab_indicator.dart';
 
-class WeightOverview extends StatelessWidget {
+class WeightOverview extends StatefulWidget {
+  @override
+  State<WeightOverview> createState() => _WeightOverviewState();
+}
+
+class _WeightOverviewState extends State<WeightOverview> {
   TabBar get _tabBar => TabBar(
           labelColor: Color(0xffffffff),
           unselectedLabelColor: Colors.white54,
@@ -33,6 +32,17 @@ class WeightOverview extends StatelessWidget {
             )
           ]);
 
+  DateTime date = DateTime.now();
+
+  late var formattedDate;
+  late var formattedYear;
+
+  @override
+  void initState() {
+    formattedDate = DateFormat('EEEE, d MMM').format(date);
+    formattedYear = DateFormat('yyyy').format(date);
+  }
+
   @override
   Widget build(BuildContext context) {
     double baseWidth = 375;
@@ -45,6 +55,7 @@ class WeightOverview extends StatelessWidget {
             backgroundColor: Colors.black,
             appBar: AppBar(
               automaticallyImplyLeading: true,
+              centerTitle: true,
               title: Text("Weight overview"),
               backgroundColor: Color(0xff1A1A1A),
               bottom: PreferredSize(
@@ -57,7 +68,7 @@ class WeightOverview extends StatelessWidget {
                   SizedBox(height: 20),
                   ListTile(
                     onTap: () async {
-                      DateTime? date = await showDatePicker(
+                      await showDatePicker(
                           context: context,
                           initialDate: DateTime.now(),
                           firstDate: DateTime(1900),
@@ -74,15 +85,23 @@ class WeightOverview extends StatelessWidget {
                                   dialogBackgroundColor: Colors.grey[900]),
                               child: child!,
                             );
+                          }).then((selectedDate) {
+                        if (selectedDate != null) {
+                          setState(() {
+                            date = selectedDate;
+                            formattedDate =
+                                DateFormat('EEEE, d MMM').format(selectedDate);
                           });
+                        }
+                      });
                     },
                     leading: const Icon(Icons.arrow_back_ios_new,
                         color: Colors.white),
                     title: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: const [
+                      children: [
                         Text(
-                          'Wed 25 . Jan',
+                          formattedDate,
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: 17,
@@ -154,7 +173,6 @@ class WeightOverview extends StatelessWidget {
                                 fontSize: 18,
                                 fontWeight: FontWeight.w500,
                               ),
-                              textDirection: TextDirection.ltr,
                             ),
                           ),
                           ListTile(
@@ -260,7 +278,6 @@ class WeightOverview extends StatelessWidget {
                                 fontSize: 18,
                                 fontWeight: FontWeight.w500,
                               ),
-                              textDirection: TextDirection.ltr,
                             ),
                           ),
                           ListTile(
@@ -326,7 +343,6 @@ class WeightOverview extends StatelessWidget {
                                 fontSize: 18,
                                 fontWeight: FontWeight.w500,
                               ),
-                              textDirection: TextDirection.ltr,
                             ),
                           ),
                           ListTile(
@@ -560,7 +576,7 @@ class WeightOverview extends StatelessWidget {
                   SizedBox(height: 20),
                   ListTile(
                     onTap: () async {
-                      DateTime? date = await showDatePicker(
+                      await showDatePicker(
                           context: context,
                           initialDate: DateTime.now(),
                           firstDate: DateTime(1900),
@@ -578,7 +594,15 @@ class WeightOverview extends StatelessWidget {
                                   dialogBackgroundColor: Colors.grey[900]),
                               child: child!,
                             );
+                          }).then((selectedDate) {
+                        if (selectedDate != null) {
+                          setState(() {
+                            date = selectedDate;
+                            formattedYear =
+                                DateFormat('yyyy').format(selectedDate);
                           });
+                        }
+                      });
                     },
                     leading: const Icon(Icons.arrow_back_ios_new,
                         color: Colors.white),
@@ -648,7 +672,6 @@ class WeightOverview extends StatelessWidget {
                                 fontSize: 18,
                                 fontWeight: FontWeight.w500,
                               ),
-                              textDirection: TextDirection.ltr,
                             ),
                           ),
                           ListTile(
@@ -754,7 +777,6 @@ class WeightOverview extends StatelessWidget {
                                 fontSize: 18,
                                 fontWeight: FontWeight.w500,
                               ),
-                              textDirection: TextDirection.ltr,
                             ),
                           ),
                           ListTile(
@@ -820,7 +842,6 @@ class WeightOverview extends StatelessWidget {
                                 fontSize: 18,
                                 fontWeight: FontWeight.w500,
                               ),
-                              textDirection: TextDirection.ltr,
                             ),
                           ),
                           ListTile(
@@ -1094,7 +1115,6 @@ class WeightOverview extends StatelessWidget {
                                 fontSize: 18,
                                 fontWeight: FontWeight.w500,
                               ),
-                              textDirection: TextDirection.ltr,
                             ),
                           ),
                           ListTile(
@@ -1200,7 +1220,6 @@ class WeightOverview extends StatelessWidget {
                                 fontSize: 18,
                                 fontWeight: FontWeight.w500,
                               ),
-                              textDirection: TextDirection.ltr,
                             ),
                           ),
                           ListTile(
@@ -1266,7 +1285,6 @@ class WeightOverview extends StatelessWidget {
                                 fontSize: 18,
                                 fontWeight: FontWeight.w500,
                               ),
-                              textDirection: TextDirection.ltr,
                             ),
                           ),
                           ListTile(

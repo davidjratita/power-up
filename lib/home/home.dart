@@ -1,21 +1,11 @@
-import 'dart:ui';
-import '../themes/theme.dart';
 import '../themes/theme.dart';
 import 'package:intl/intl.dart';
 import 'package:myapp/utils.dart';
-import 'package:myapp/utils.dart';
 import '../widgets/line_chart.dart';
 import '../widgets/utils_class.dart';
-import '../widgets/utils_class.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:myapp/widgets/pie_chart.dart';
-import 'package:myapp/calories/meal_list.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:myapp/widgets/line_chart2.dart';
 import 'package:myapp/widgets/line_chart4.dart';
-import 'package:myapp/calories/calories_main.dart';
 import 'package:myapp/calories/weight-overviewall.dart';
 import 'package:myapp/calories/calories-home-screen.dart';
 import 'package:circular_chart_flutter/circular_chart_flutter.dart';
@@ -71,7 +61,7 @@ class _HomePageViewState extends State<HomePageView> {
   late var formattedDate;
   @override
   void initState() {
-    formattedDate = DateFormat('mm-yyyy').format(date);
+    formattedDate = DateFormat('MMMM yyyy').format(date);
   }
 
   @override
@@ -304,7 +294,7 @@ class _HomePageViewState extends State<HomePageView> {
                     setState(() {
                       date = selectedDate;
                       formattedDate =
-                          DateFormat('mm-yyyy').format(selectedDate);
+                          DateFormat('MMMM yyyy').format(selectedDate);
                     });
                   }
                 });
@@ -481,7 +471,7 @@ class _HomePageViewState extends State<HomePageView> {
           ListTile(
             title: GestureDetector(
               onTap: () async {
-                DateTime? date = await showDatePicker(
+                await showDatePicker(
                     context: context,
                     initialDate: DateTime.now(),
                     firstDate: DateTime(1900),
@@ -498,7 +488,15 @@ class _HomePageViewState extends State<HomePageView> {
                             dialogBackgroundColor: Colors.grey[900]),
                         child: child!,
                       );
+                    }).then((selectedDate) {
+                  if (selectedDate != null) {
+                    setState(() {
+                      date = selectedDate;
+                      formattedDate =
+                          DateFormat('MMMM yyyy').format(selectedDate);
                     });
+                  }
+                });
               },
               child: Row(
                 children: [
@@ -506,7 +504,7 @@ class _HomePageViewState extends State<HomePageView> {
                       color: Colors.white, size: 14),
                   SizedBox(width: 20),
                   Text(
-                    'February 2023',
+                    formattedDate,
                     style: TextStyle(
                         color: Colors.white,
                         fontSize: 17,

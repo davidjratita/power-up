@@ -1,16 +1,15 @@
-import 'dart:ui';
 import '../themes/theme.dart';
-import 'package:myapp/utils.dart';
+import 'package:intl/intl.dart';
 import '../widgets/line_chart.dart';
-import '../widgets/utils_class.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/gestures.dart';
-import 'package:myapp/widgets/line_chart.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:myapp/widgets/utils_class.dart';
 import 'package:myapp/widgets/bubble_tab_indicator.dart';
 
-class WorkoutOverview extends StatelessWidget {
+class WorkoutOverview extends StatefulWidget {
+  @override
+  State<WorkoutOverview> createState() => _WorkoutOverviewState();
+}
+
+class _WorkoutOverviewState extends State<WorkoutOverview> {
   TabBar get _tabBar => TabBar(
           labelColor: Color(0xffffffff),
           unselectedLabelColor: Colors.white54,
@@ -32,6 +31,17 @@ class WorkoutOverview extends StatelessWidget {
               text: "All",
             )
           ]);
+
+  DateTime date = DateTime.now();
+
+  late var formattedDate;
+  late var formattedYear;
+
+  @override
+  void initState() {
+    formattedDate = DateFormat('MMMM yyyy').format(date);
+    formattedYear = DateFormat('yyyy').format(date);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -58,7 +68,7 @@ class WorkoutOverview extends StatelessWidget {
                   SizedBox(height: 20),
                   ListTile(
                     onTap: () async {
-                      DateTime? date = await showDatePicker(
+                      await showDatePicker(
                           context: context,
                           initialDate: DateTime.now(),
                           firstDate: DateTime(1900),
@@ -75,15 +85,23 @@ class WorkoutOverview extends StatelessWidget {
                                   dialogBackgroundColor: Colors.grey[900]),
                               child: child!,
                             );
+                          }).then((selectedDate) {
+                        if (selectedDate != null) {
+                          setState(() {
+                            date = selectedDate;
+                            formattedDate =
+                                DateFormat('MMMM yyyy').format(selectedDate);
                           });
+                        }
+                      });
                     },
                     leading: const Icon(Icons.arrow_back_ios_new,
                         color: Colors.white),
                     title: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: const [
+                      children: [
                         Text(
-                          'January 2023',
+                          formattedDate,
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: 17,
@@ -131,7 +149,6 @@ class WorkoutOverview extends StatelessWidget {
                                 fontSize: 18,
                                 fontWeight: FontWeight.w500,
                               ),
-                              textDirection: TextDirection.ltr,
                             ),
                           ),
                           ListTile(
@@ -207,7 +224,7 @@ class WorkoutOverview extends StatelessWidget {
                   SizedBox(height: 20),
                   ListTile(
                     onTap: () async {
-                      DateTime? date = await showDatePicker(
+                      await showDatePicker(
                           context: context,
                           initialDate: DateTime.now(),
                           firstDate: DateTime(1900),
@@ -224,15 +241,23 @@ class WorkoutOverview extends StatelessWidget {
                                   dialogBackgroundColor: Colors.grey[900]),
                               child: child!,
                             );
+                          }).then((selectedDate) {
+                        if (selectedDate != null) {
+                          setState(() {
+                            date = selectedDate;
+                            formattedYear =
+                                DateFormat('yyyy').format(selectedDate);
                           });
+                        }
+                      });
                     },
                     leading: const Icon(Icons.arrow_back_ios_new,
                         color: Colors.white),
                     title: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: const [
+                      children: [
                         Text(
-                          '2023',
+                          formattedYear,
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: 17,
@@ -280,7 +305,6 @@ class WorkoutOverview extends StatelessWidget {
                                 fontSize: 18,
                                 fontWeight: FontWeight.w500,
                               ),
-                              textDirection: TextDirection.ltr,
                             ),
                           ),
                           ListTile(
@@ -382,7 +406,6 @@ class WorkoutOverview extends StatelessWidget {
                                 fontSize: 18,
                                 fontWeight: FontWeight.w500,
                               ),
-                              textDirection: TextDirection.ltr,
                             ),
                           ),
                           ListTile(

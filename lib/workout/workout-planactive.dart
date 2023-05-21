@@ -1,11 +1,7 @@
-import 'dart:ui';
 import '../themes/theme.dart';
-import 'package:myapp/utils.dart';
-import 'package:myapp/utils.dart';
+import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:myapp/widgets/utils_class.dart';
 import 'package:myapp/workout/edit-routine.dart';
 import 'package:myapp/workout/add-routineempty.dart';
@@ -16,6 +12,15 @@ class Workoutplan extends StatefulWidget {
 }
 
 class _WorkoutplanState extends State<Workoutplan> {
+  DateTime date = DateTime.now();
+
+  late var formattedDate;
+
+  @override
+  void initState() {
+    formattedDate = DateFormat('d MMM').format(date);
+  }
+
   @override
   Widget build(BuildContext context) {
     double baseWidth = 375;
@@ -33,8 +38,8 @@ class _WorkoutplanState extends State<Workoutplan> {
           children: [
             const SizedBox(height: 10.0),
             ListTile(
-              onTap: () {
-                showDatePicker(
+              onTap: () async {
+                await showDatePicker(
                     context: context,
                     initialDate: DateTime.now(),
                     firstDate: DateTime(1900),
@@ -51,15 +56,22 @@ class _WorkoutplanState extends State<Workoutplan> {
                             dialogBackgroundColor: Colors.grey[900]),
                         child: child!,
                       );
+                    }).then((selectedDate) {
+                  if (selectedDate != null) {
+                    setState(() {
+                      date = selectedDate;
+                      formattedDate = DateFormat('d MMM').format(selectedDate);
                     });
+                  }
+                });
               },
               leading:
                   const Icon(Icons.arrow_back_ios_new, color: Colors.white),
               title: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: const [
+                children: [
                   Text(
-                    '23. - 29. Jan',
+                    formattedDate,
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 17,

@@ -5,9 +5,7 @@ import 'package:myapp/widgets/utils_class.dart';
 import 'package:myapp/onboarding/size_config.dart';
 import 'package:myapp/log-in-register/basic_info.dart';
 import 'package:myapp/log-in-register/select_goal.dart';
-import 'package:myapp/onboarding/onboarding_screen.dart';
 import 'package:myapp/log-in-register/select_gender.dart';
-import 'package:myapp/log-in-register/change_password.dart';
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({Key? key}) : super(key: key);

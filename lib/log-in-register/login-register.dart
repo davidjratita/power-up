@@ -1,31 +1,8 @@
-import 'dart:ui';
 import '../themes/theme.dart';
-import 'package:myapp/utils.dart';
 import '../widgets/utils_class.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/gestures.dart';
-import 'package:myapp/settings/steps.dart';
-import 'package:myapp/home/dashboard.dart';
-import 'package:myapp/settings/settings.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:myapp/workout/edit-routine.dart';
 import 'package:myapp/log-in-register/login.dart';
-import 'package:myapp/workout/steps-overview.dart';
-import 'package:myapp/workout/routine-detail.dart';
-import 'package:myapp/settings/steps-overview.dart';
-import 'package:myapp/workout/add-routineempty.dart';
-import 'package:myapp/workout/workout-overview.dart';
-import 'package:myapp/settings/workout-overview.dart';
-import 'package:myapp/settings/workout-routines.dart';
-import 'package:myapp/workout/add-routinesearch.dart';
-import 'package:myapp/workout/workout-planactive.dart';
-import 'package:myapp/workout/workout-home-screen.dart';
-import 'package:myapp/settings/workout-overviewall.dart';
-import 'package:myapp/settings/my-profile-and-goals.dart';
-import 'package:myapp/workout/create-new-routineempty.dart';
-import 'package:myapp/log-in-register/change_password.dart';
 import 'package:myapp/log-in-register/register_screen.dart';
-import 'package:myapp/workout/add-excercise-to-routine.dart';
 
 class WelcomePage extends StatefulWidget {
   const WelcomePage({super.key});
@@ -87,7 +64,7 @@ class _WelcomePageState extends State<WelcomePage> {
                             ffem: ffem,
                             onPressed: () {
                               Navigator.of(context).push(MaterialPageRoute(
-                                  builder: ((context) => DashBoardView())));
+                                  builder: ((context) => LoginView())));
                             },
                             buttonText: 'Log in',
                             buttonColor: PrimaryColor,
