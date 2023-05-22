@@ -1,10 +1,7 @@
-import 'dart:ui';
 import 'package:myapp/utils.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:myapp/themes/theme.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:myapp/workout/edit-routine.dart';
 
 class RoutineDetail extends StatefulWidget {

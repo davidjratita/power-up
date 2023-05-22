@@ -1,7 +1,6 @@
+import 'package:flutter/material.dart';
 library flutter_bubble_tab_indicator;
 
-import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 /// Used with [TabBar.indicator] to draw a bubble on the
 /// selected tab.

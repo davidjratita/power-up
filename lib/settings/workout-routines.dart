@@ -2,10 +2,7 @@ import '../themes/theme.dart';
 import '../widgets/dialog_box.dart';
 import '../widgets/utils_class.dart';
 import 'package:flutter/material.dart';
-import '../log-in-register/login.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:myapp/calories/add_meal.dart';
-import 'package:myapp/workout/edit-routine.dart';
 import 'package:myapp/settings/workout-edit-routines.dart';
 import 'package:myapp/settings/workout-create-routine.dart';
 

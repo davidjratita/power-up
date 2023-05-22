@@ -1,23 +1,5 @@
-import 'dart:ui';
-import '../themes/theme.dart';
-import '../themes/theme.dart';
-import 'package:myapp/utils.dart';
-import 'package:myapp/utils.dart';
-import '../widgets/line_chart.dart';
 import '../widgets/utils_class.dart';
-import '../widgets/utils_class.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:myapp/widgets/pie_chart.dart';
-import 'package:myapp/calories/meal_list.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:myapp/widgets/line_chart2.dart';
-import 'package:myapp/widgets/line_chart4.dart';
-import 'package:myapp/calories/calories_main.dart';
-import 'package:myapp/calories/weight-overviewall.dart';
-import 'package:myapp/calories/calories-home-screen.dart';
-import 'package:circular_chart_flutter/circular_chart_flutter.dart';
 
 class SettingsSteps extends StatefulWidget {
   const SettingsSteps({super.key});

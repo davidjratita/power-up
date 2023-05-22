@@ -1,13 +1,5 @@
-import 'dart:ui';
 import '../themes/theme.dart';
-import 'package:myapp/utils.dart';
-import '../widgets/line_chart.dart';
-import '../widgets/utils_class.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/gestures.dart';
-import 'package:myapp/widgets/line_chart.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:myapp/widgets/utils_class.dart';
 import 'package:myapp/widgets/bubble_tab_indicator.dart';
 import 'package:circular_chart_flutter/circular_chart_flutter.dart';
 
